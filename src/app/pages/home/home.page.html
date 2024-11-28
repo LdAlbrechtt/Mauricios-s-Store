@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Mauricio's Store
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/cart">
+        <ion-icon name="cart-outline"></ion-icon>
+      </ion-button>
+      <ion-button routerLink="/profile">
+        <ion-icon name="person-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-segment scrollable (ionChange)="filterByCategory($event)">
+    <ion-segment-button value="">
+      <ion-label>All</ion-label>
+    </ion-segment-button>
+    <ion-segment-button *ngFor="let category of categories" [value]="category">
+      <ion-label>{{category | titlecase}}</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <div class="ion-padding">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6" *ngFor="let product of filteredProducts">  <!-- Mudou aqui -->
+          <ion-card appHighlight appFadeIn [routerLink]="['/product', product.id]">
+            <img [src]="product.image" [alt]="product.title">
+            <ion-card-header>
+              <ion-card-title class="ion-text-wrap">{{product.title}}</ion-card-title>
+              <ion-card-subtitle>{{product.price | priceFormat}}</ion-card-subtitle>
+            </ion-card-header>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <ion-loading [isOpen]="loading" message="Loading products..."></ion-loading>
+</ion-content>

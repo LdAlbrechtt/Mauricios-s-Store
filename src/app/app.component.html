@@ -1,0 +1,54 @@
+<ion-app>
+  <!-- Menu lateral -->
+  <ion-menu contentId="main-content" type="overlay">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Mauricio's Store</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+      <ion-list>
+        <ion-menu-toggle auto-hide="false">
+          <ion-item routerLink="/home" routerDirection="root" routerLinkActive="active-item">
+            <ion-icon name="home-outline" slot="start"></ion-icon>
+            <ion-label>Home</ion-label>
+          </ion-item>
+
+          <ion-item routerLink="/cart" routerDirection="root" routerLinkActive="active-item">
+            <ion-icon name="cart-outline" slot="start"></ion-icon>
+            <ion-label>Carrinho</ion-label>
+          </ion-item>
+
+          <ion-item routerLink="/profile" routerDirection="root" routerLinkActive="active-item">
+            <ion-icon name="person-outline" slot="start"></ion-icon>
+            <ion-label>Perfil</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <!-- Conteúdo principal -->
+  <ion-router-outlet id="main-content"></ion-router-outlet>
+
+  <!-- Menu inferior (Tabs) -->
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="home" routerLink="/home">
+        <ion-icon name="home-outline"></ion-icon>
+        <ion-label>Home</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="cart" routerLink="/cart">
+        <ion-icon name="cart-outline"></ion-icon>
+        <ion-label>Carrinho</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="profile" routerLink="/profile">
+        <ion-icon name="person-outline"></ion-icon>
+        <ion-label>Perfil</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-app>

@@ -1,0 +1,27 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/home"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Product Details</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content *ngIf="product">
+    <div class="product-container" appFadeIn>
+      <img [src]="product.image" [alt]="product.title">
+      
+      <div class="ion-padding">
+        <h1>{{product.title}}</h1>
+        <p class="price">{{product.price | priceFormat}}</p>
+        <p class="description">{{product.description}}</p>
+        
+        <ion-button expand="block" (click)="addToCart()">
+          Add to Cart
+          <ion-icon name="cart" slot="end"></ion-icon>
+        </ion-button>
+      </div>
+    </div>
+  
+    <ion-loading [isOpen]="loading" message="Loading product..."></ion-loading>
+  </ion-content>

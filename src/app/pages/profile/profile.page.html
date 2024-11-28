@@ -1,0 +1,44 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/home"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Profile</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <div class="profile-container ion-padding" appFadeIn>
+      <div class="profile-header">
+        <ion-avatar>
+          <img [src]="user.avatar" alt="Profile picture">
+        </ion-avatar>
+        <h2>{{user.name}}</h2>
+        <p>{{user.email}}</p>
+      </div>
+  
+      <ion-segment value="orders">
+        <ion-segment-button value="orders">
+          <ion-label>Orders</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="settings">
+          <ion-label>Settings</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+  
+      <div class="orders-list">
+        <ion-list>
+          <ion-item *ngFor="let order of user.orders" appHighlight>
+            <ion-label>
+              <h3>Order #{{order.id}}</h3>
+              <p>{{order.date | date}}</p>
+              <p>Total: {{order.total | priceFormat}}</p>
+            </ion-label>
+            <ion-badge slot="end" [color]="order.status === 'Delivered' ? 'success' : 'primary'">
+              {{order.status}}
+            </ion-badge>
+          </ion-item>
+        </ion-list>
+      </div>
+    </div>
+  </ion-content>
